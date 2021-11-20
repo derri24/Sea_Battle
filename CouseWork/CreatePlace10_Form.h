@@ -356,7 +356,7 @@ namespace CouseWork {
 					Class1::FirstPlace = gcnew array<int, 2>(10, 10);
 					for (int i = 0; i < 10; i++) {
 						for (int j = 0; j < 10; j++) {
-							Class1::FirstPlace[i, j] = Class1::MyPlace[j, i];
+							Class1::FirstPlace[i, j] = Class1::MyPlace[i, j];
 						}
 					}
 					pictureBox2->BringToFront();
@@ -383,7 +383,7 @@ namespace CouseWork {
 
 						label1->Text = label1->Text + "\r\n";
 						for (int j = 0; j < 10; j++)
-							label1->Text = label1->Text + (Class1::MyPlace[i, j]).ToString();
+							label1->Text = label1->Text + (Class1::MyPlace[i,j]).ToString();
 					}
 
 					CreatePlace10_Form::Text = "2 Игрок";
@@ -402,7 +402,7 @@ namespace CouseWork {
 					Class1::LastPlace = gcnew array<int, 2>(10, 10);
 					for (int i = 0; i < 10; i++) {
 						for (int j = 0; j < 10; j++) {
-							Class1::LastPlace[i, j] = Class1::MyPlace[j, i];
+							Class1::LastPlace[i, j] = Class1::MyPlace[i, j];
 						}
 					}
 					this->Hide();
@@ -468,13 +468,13 @@ namespace CouseWork {
 	}
 		   void Ship4(int location)
 		   {
-			   if (location == VERTICAL) {
+			   if (location ==  HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 				   Class1::MyPlace[X + 2, Y] = SHIP;
 				   Class1::MyPlace[X + 3, Y] = SHIP;
 			   }
-			   else if (location == HORIZONTAL) {
+			   else if (location == VERTICAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X, Y + 1] = SHIP;
 				   Class1::MyPlace[X, Y + 2] = SHIP;
@@ -483,12 +483,12 @@ namespace CouseWork {
 		   }
 		   void Ship3(int location)
 		   {
-			   if (location == VERTICAL) {
+			   if (location ==  HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 				   Class1::MyPlace[X + 2, Y] = SHIP;
 			   }
-			   else if (location == HORIZONTAL) {
+			   else if (location == VERTICAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X, Y + 1] = SHIP;
 				   Class1::MyPlace[X, Y + 2] = SHIP;
@@ -497,11 +497,11 @@ namespace CouseWork {
 
 		   void Ship2(int location)
 		   {
-			   if (location == VERTICAL) {
+			   if (location ==  HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 			   }
-			   else if (location == HORIZONTAL) {
+			   else if (location == VERTICAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X, Y + 1] = SHIP;
 			   }
@@ -626,58 +626,6 @@ namespace CouseWork {
 		}
 
 	}
-		   int ChekShip1Vertical() {
-			   int Count = 0;
-			   for (int i = X - 1; i <= X + 1; i++) {
-				   for (int j = Y - 1; j <= Y + 1; j++) {
-					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
-						   if (Class1::MyPlace[i, j] == 1) {
-							   Count++;
-						   }
-				   }
-			   }
-			   return Count;
-		   }
-
-		   int ChekShip2Vertical() {
-			   int Count = 0;
-			   for (int i = X - 1; i <= X + 2; i++) {
-				   for (int j = Y - 1; j <= Y + 1; j++) {
-					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
-						   if (Class1::MyPlace[i, j] == 1) {
-							   Count++;
-						   }
-				   }
-			   }
-			   return Count;
-		   }
-
-		   int ChekShip3Vertical() {
-			   int Count = 0;
-			   for (int i = X - 1; i <= X + 3; i++) {
-				   for (int j = Y - 1; j <= Y + 1; j++) {
-					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
-						   if (Class1::MyPlace[i, j] == 1) {
-							   Count++;
-						   }
-				   }
-			   }
-			   return Count;
-		   }
-
-		   int ChekShip4Vertical() {
-			   int Count = 0;
-			   for (int i = X - 1; i <= X + 4; i++) {
-				   for (int j = Y - 1; j <= Y + 1; j++) {
-					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
-						   if (Class1::MyPlace[i, j] == 1) {
-							   Count++;
-						   }
-				   }
-			   }
-			   return Count;
-		   }
-
 		   int ChekShip1Horizontal() {
 			   int Count = 0;
 			   for (int i = X - 1; i <= X + 1; i++) {
@@ -693,6 +641,58 @@ namespace CouseWork {
 
 		   int ChekShip2Horizontal() {
 			   int Count = 0;
+			   for (int i = X - 1; i <= X + 2; i++) {
+				   for (int j = Y - 1; j <= Y + 1; j++) {
+					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
+						   if (Class1::MyPlace[i, j] == 1) {
+							   Count++;
+						   }
+				   }
+			   }
+			   return Count;
+		   }
+
+		   int ChekShip3Horizontal() {
+			   int Count = 0;
+			   for (int i = X - 1; i <= X + 3; i++) {
+				   for (int j = Y - 1; j <= Y + 1; j++) {
+					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
+						   if (Class1::MyPlace[i, j] == 1) {
+							   Count++;
+						   }
+				   }
+			   }
+			   return Count;
+		   }
+
+		   int ChekShip4Horizontal() {
+			   int Count = 0;
+			   for (int i = X - 1; i <= X + 4; i++) {
+				   for (int j = Y - 1; j <= Y + 1; j++) {
+					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
+						   if (Class1::MyPlace[i, j] == 1) {
+							   Count++;
+						   }
+				   }
+			   }
+			   return Count;
+		   }
+
+		   int ChekShip1Vertical() {
+			   int Count = 0;
+			   for (int i = X - 1; i <= X + 1; i++) {
+				   for (int j = Y - 1; j <= Y + 1; j++) {
+					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
+						   if (Class1::MyPlace[i, j] == 1) {
+							   Count++;
+						   }
+				   }
+			   }
+			   return Count;
+		   }
+
+		   int ChekShip2Vertical() {
+			   int Count = 0;
 			   for (int i = X - 1; i <= X + 1; i++) {
 				   for (int j = Y - 1; j <= Y + 2; j++) {
 					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0))
@@ -704,7 +704,7 @@ namespace CouseWork {
 			   return Count;
 		   }
 
-		   int ChekShip3Horizontal() {
+		   int ChekShip3Vertical() {
 			   int Count = 0;
 			   for (int i = X - 1; i <= X + 1; i++) {
 				   for (int j = Y - 1; j <= Y + 3; j++) {
@@ -717,7 +717,7 @@ namespace CouseWork {
 			   return Count;
 		   }
 
-		   int ChekShip4Horizontal() {
+		   int ChekShip4Vertical() {
 			   int Count = 0;
 			   for (int i = X - 1; i <= X + 1; i++) {
 				   for (int j = Y - 1; j <= Y + 4; j++) {
@@ -780,8 +780,8 @@ namespace CouseWork {
 
 		   void PaintingShip() {
 			   picturebox = gcnew System::Windows::Forms::PictureBox();
-			   picturebox->Top = pictureBox2->Top + X * PixalSize;
-			   picturebox->Left = pictureBox2->Left + Y * PixalSize;
+			   picturebox->Top = pictureBox2->Top + Y * PixalSize;
+			   picturebox->Left = pictureBox2->Left + X * PixalSize;
 			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			   Controls->Add(picturebox);
 			   picturebox->BringToFront();
@@ -818,7 +818,7 @@ namespace CouseWork {
 				   temp = 1;
 				   while (temp != 0) {
 					   temp = CheckShipPlace();
-					   if ((temp == 0) && (((turn == VERTICAL) && (10 - X >= ChooseShip)) || ((turn == HORIZONTAL) && (10 - Y >= ChooseShip)))) {
+					   if ((temp == 0) && (((turn == VERTICAL) && (10 - Y >= ChooseShip)) || ((turn == HORIZONTAL) && (10 - X >= ChooseShip)))) {
 						   CreateShip();
 						   if (CountClick != -1) {
 							   PaintingShip();
@@ -994,7 +994,7 @@ namespace CouseWork {
 		RandomShipPlace();
 		for (int i = 0; i < 10; i++)
 			for (int j = 0; j < 10; j++) {
-				Class1::BotPlace[i, j] = Class1::MyPlace[j, i];
+				Class1::BotPlace[i, j] = Class1::MyPlace[i, j];
 			}
 		CountClick = 1;
 		for (int i = 0; i < 10; i++)

@@ -247,7 +247,7 @@ namespace CouseWork {
 #pragma endregion
 
 		int NumberPlayer = 1;
-		const int PixalSize = 33;
+		const int PixelSize = 33;
 		int CountPartShipFirstPlace = 0;
 		int  CountPartShipLastPlace = 0;
 		System::Windows::Forms::PictureBox^ picturebox;
@@ -269,6 +269,7 @@ namespace CouseWork {
 	private: System::Void PlayInPlace10_Form_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 
+		  
 
 	private: System::Void GiveUpButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NumberPlayer == 1) {
@@ -286,6 +287,227 @@ namespace CouseWork {
 				System::Windows::Forms::MessageBoxButtons::OK);
 		}
 	}
+
+		   void PrintKilled(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
+			   picturebox = gcnew System::Windows::Forms::PictureBox();
+			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			   Controls->Add(picturebox);
+			   picturebox->BringToFront();
+			   picturebox->Height = 33;
+			   picturebox->Width = 33;
+			   picturebox->Top = PlacePictureBox->Top + PixelSize * Shot_Y;
+			   picturebox->Left = PlacePictureBox->Left + PixelSize * Shot_X;
+			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Killed.png");
+		   }
+
+		   void PrintWounded(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
+			   picturebox = gcnew System::Windows::Forms::PictureBox();
+			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			   Controls->Add(picturebox);
+			   picturebox->BringToFront();
+			   picturebox->Height = 33;
+			   picturebox->Width = 33;
+			   picturebox->Top = PlacePictureBox->Top + PixelSize * Shot_Y;
+			   picturebox->Left = PlacePictureBox->Left + PixelSize * Shot_X;
+			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Wounded.png");
+		   }
+
+		   void PrintAway(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
+			   picturebox = gcnew System::Windows::Forms::PictureBox();
+			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			   Controls->Add(picturebox);
+			   picturebox->BringToFront();
+			   picturebox->Height = 13;
+			   picturebox->Width = 13;
+			   picturebox->Top = PlacePictureBox->Top + 10 + PixelSize * Shot_Y;
+			   picturebox->Left = PlacePictureBox->Left + 10 + PixelSize * Shot_X;
+			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Away.png");
+		   }
+
+		   void PrintOutline(int Temp_X, int Temp_Y, array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
+			   for (int i = Temp_X - 1; i <= Temp_X + 1; i++) {
+				   for (int j = Temp_Y - 1; j <= Temp_Y + 1; j++) {
+					   if ((i < 10) && (i >= 0) && (j < 10) && (j >= 0) && (TempPlace[i, j] == 0)) {
+						   TempPlace[i, j] = -1;
+						   PrintAway(i, j, TempPlacePictureBox);
+					   }
+
+				   }
+			   }
+
+
+		   }
+
+		   void CheckingKilledHorizontalShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
+			   int i = 0;
+			   for (int j = 0; j < 10; j++) {
+				   while (i < 10) {
+					   if ((i + 3 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i + 1, j] == 2) && (TempPlace[i + 2, j] == 2) && (TempPlace[i + 3, j] == 2))) {
+						   if (((i == 0) || (TempPlace[i - 1, j] != 1)) && ((i + 3 == 9) || (TempPlace[i + 4, j] != 1))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i + 1, j] = 5;
+							   TempPlace[i + 2, j] = 5;
+							   TempPlace[i + 3, j] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i + 1, j, TempPlacePictureBox);
+							   PrintKilled(i + 2, j, TempPlacePictureBox);
+							   PrintKilled(i + 3, j, TempPlacePictureBox);
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 1, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 2, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 3, j, TempPlace, TempPlacePictureBox);
+							   i += 4;
+						   }
+						   else {
+							   i++;
+						   }
+					   }
+					   else if ((i + 2 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i + 1, j] == 2) && (TempPlace[i + 2, j] == 2))) {
+						   if (((i == 0) || (TempPlace[i - 1, j] != 1)) && ((i + 2 == 9) || (TempPlace[i + 3, j] != 1))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i + 1, j] = 5;
+							   TempPlace[i + 2, j] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i + 1, j, TempPlacePictureBox);
+							   PrintKilled(i + 2, j, TempPlacePictureBox);
+
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 1, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 2, j, TempPlace, TempPlacePictureBox);
+							   i += 3;
+						   }
+						   else {
+							   i++;
+						   }
+
+					   }
+					   else if ((i + 1 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i + 1, j] == 2))) {
+						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) && ((i + 1 == 9) || ((TempPlace[i + 2, j] != 1) && (TempPlace[i + 2, j] != 2)))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i + 1, j] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i + 1, j, TempPlacePictureBox);
+
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i + 1, j, TempPlace, TempPlacePictureBox);
+							   i += 2;
+						   }
+						   else {
+							   i++;
+						   }
+
+					   }
+					   else if (TempPlace[i, j] == 2) {
+						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
+							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
+							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   TempPlace[i, j] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   i += 1;
+						   }
+						   else {
+							   i++;
+						   }
+
+					   }
+					   else
+						   i++;
+
+				   }
+				   i = 0;
+			   }
+
+		   }
+
+		   void CheckigKilledShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
+			   CheckingKilledHorizontalShip(TempPlace, TempPlacePictureBox);
+			   CheckingKilledVerticalShip(TempPlace, TempPlacePictureBox);
+		   }
+
+		   void CheckingKilledVerticalShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
+			   int j = 0;
+			   for (int i = 0; i < 10; i++) {
+				   while (j < 10) {
+					   if ((j + 3 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i, j + 1] == 2) && (TempPlace[i, j + 2] == 2) && (TempPlace[i, j + 3] == 2))) {
+						   if (((j == 0) || (TempPlace[i, j - 1] != 1)) && ((j + 3 == 9) || (TempPlace[i, j + 4] != 1))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i, j + 1] = 5;
+							   TempPlace[i, j + 2] = 5;
+							   TempPlace[i, j + 3] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i, j + 1, TempPlacePictureBox);
+							   PrintKilled(i, j + 2, TempPlacePictureBox);
+							   PrintKilled(i, j + 3, TempPlacePictureBox);
+
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 1, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 2, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 3, TempPlace, TempPlacePictureBox);
+							   j += 4;
+						   }
+						   else {
+							   j++;
+						   }
+					   }
+					   else if ((j + 2 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i, j + 1] == 2) && (TempPlace[i, j + 2] == 2))) {
+						   if (((j == 0) || (TempPlace[i, j - 1] != 1)) && ((j + 2 == 9) || (TempPlace[i, j + 3] != 1))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i, j + 1] = 5;
+							   TempPlace[i, j + 2] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i, j + 1, TempPlacePictureBox);
+							   PrintKilled(i, j + 2, TempPlacePictureBox);
+
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 1, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 2, TempPlace, TempPlacePictureBox);
+							   j += 3;
+						   }
+						   else {
+							   j++;
+						   }
+
+					   }
+					   else if ((j + 1 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i, j + 1] == 2))) {
+						   if (((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) && ((j + 1 == 9) || ((TempPlace[i, j + 2] != 1) && (TempPlace[i, j + 2] != 2)))) {
+							   TempPlace[i, j] = 5;
+							   TempPlace[i, j + 1] = 5;
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintKilled(i, j + 1, TempPlacePictureBox);
+
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   PrintOutline(i, j + 1, TempPlace, TempPlacePictureBox);
+							   j += 2;
+						   }
+						   else {
+							   j++;
+						   }
+
+					   }
+					   else if (TempPlace[i, j] == 2) {
+						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
+							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
+							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   PrintKilled(i, j, TempPlacePictureBox);
+							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
+							   j += 1;
+						   }
+						   else {
+							   j++;
+						   }
+
+					   }
+					   else
+						   j++;
+				   }
+				   j = 0;
+			   }
+
+		   }
+
 		   void PrintError(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
 		   {
 			   if ((CountPartShipFirstPlace == 20) || (CountPartShipLastPlace == 20)) {
@@ -300,54 +522,21 @@ namespace CouseWork {
 		   void PrintShot(int X, int Y) {
 			   if (NumberPlayer == 1) {
 				   if (Class1::LastPlace[X, Y] == -1) {
-					   picturebox = gcnew System::Windows::Forms::PictureBox();
-					   picturebox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::PrintError);
-					   picturebox->Height = 13;
-					   picturebox->Width = 13;
-					   picturebox->Top = LastPictureBox->Top + 10 + PixalSize * Y;
-					   picturebox->Left = LastPictureBox->Left + 10 + PixalSize * X;
-					   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Away.png");
-					   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-					   Controls->Add(picturebox);
-					   picturebox->BringToFront();
+					   PrintAway(X, Y, LastPictureBox);
+					  
 				   }
 				   else if (Class1::LastPlace[X, Y] == 2) {
-					   picturebox = gcnew System::Windows::Forms::PictureBox();
-					   picturebox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::PrintError);
-					   picturebox->Height = 33;
-					   picturebox->Width = 33;
-					   picturebox->Top = LastPictureBox->Top + PixalSize * Y;
-					   picturebox->Left = LastPictureBox->Left + PixalSize * X;
-					   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Wounded.png");
-					   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-					   Controls->Add(picturebox);
-					   picturebox->BringToFront();
+					   PrintWounded(X, Y, LastPictureBox);
+					   CheckigKilledShip(Class1::LastPlace, LastPictureBox);
 				   }
 			   }
 			   else if (NumberPlayer == 2) {
 				   if (Class1::FirstPlace[X, Y] == -1) {
-					   picturebox = gcnew System::Windows::Forms::PictureBox();
-					   picturebox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::PrintError);
-					   picturebox->Height = 13;
-					   picturebox->Width = 13;
-					   picturebox->Top = FirstPictureBox->Top + 10 + PixalSize * Y;
-					   picturebox->Left = FirstPictureBox->Left + 10 + PixalSize * X;
-					   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Away.png");
-					   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-					   Controls->Add(picturebox);
-					   picturebox->BringToFront();
+					   PrintAway(X, Y, FirstPictureBox);
 				   }
 				   else if (Class1::FirstPlace[X, Y] == 2) {
-					   picturebox = gcnew System::Windows::Forms::PictureBox();
-					   picturebox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::PrintError);
-					   picturebox->Height = 33;
-					   picturebox->Width = 33;
-					   picturebox->Top = FirstPictureBox->Top + PixalSize * Y;
-					   picturebox->Left = FirstPictureBox->Left + PixalSize * X;
-					   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Wounded.png");
-					   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
-					   Controls->Add(picturebox);
-					   picturebox->BringToFront();
+					   PrintWounded(X, Y, FirstPictureBox);
+					   CheckigKilledShip(Class1::FirstPlace, FirstPictureBox);
 				   }
 			   }
 		   }
@@ -504,5 +693,5 @@ namespace CouseWork {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-};
+	};
 }
