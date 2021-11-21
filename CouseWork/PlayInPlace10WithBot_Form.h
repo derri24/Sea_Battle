@@ -236,8 +236,17 @@ namespace CouseWork {
 		int Flag = 0;
 
 	private: System::Void GiveUpButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (CountPartShipLastPlace != 20) {
+			CountPartShipFirstPlace = 20;
+			System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+				"Победил бот!!",
+				"Уведомление о победе",
+				System::Windows::Forms::MessageBoxButtons::OK);
+		}
+
 	}
 	private: System::Void PlayInPlace10WithBot_Form_Load(System::Object^ sender, System::EventArgs^ e) {
+		srand(time(0));
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (Class1::MyPlace[i, j] == 1) {
@@ -270,7 +279,6 @@ namespace CouseWork {
 
 		   void RandomShotBot_LightLvl() {
 			   int Shot_X, Shot_Y;
-			   srand(time(0));
 			   Shot_X = rand() % 10;
 			   Shot_Y = rand() % 10;
 
@@ -279,9 +287,7 @@ namespace CouseWork {
 				   Shot_Y = rand() % 10;
 			   }
 			   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
-				   Class1::MyPlace[Shot_X, Shot_Y] = 2;
-				   PrintWounded(Shot_X, Shot_Y, FirstPictureBox);
-				   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
+				   GoodShot1Lvl(Shot_X, Shot_Y);
 
 
 				   CountPartShipFirstPlace++;
@@ -398,7 +404,7 @@ namespace CouseWork {
 
 					   }
 					   else if ((i + 1 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i + 1, j] == 2))) {
-						   if (((i == 0) || ((TempPlace[i - 1, j] != 1)&&(TempPlace[i - 1, j] != 2))) && ((i + 1 == 9) || ((TempPlace[i + 2, j] != 1)&&(TempPlace[i + 2, j] != 2)))) {
+						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) && ((i + 1 == 9) || ((TempPlace[i + 2, j] != 1) && (TempPlace[i + 2, j] != 2)))) {
 							   TempPlace[i, j] = 5;
 							   TempPlace[i + 1, j] = 5;
 							   PrintKilled(i, j, TempPlacePictureBox);
@@ -416,8 +422,8 @@ namespace CouseWork {
 					   else if (TempPlace[i, j] == 2) {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
-							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
-								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   ((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+							   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
 							   TempPlace[i, j] = 5;
 							   PrintKilled(i, j, TempPlacePictureBox);
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
@@ -487,7 +493,7 @@ namespace CouseWork {
 
 					   }
 					   else if ((j + 1 < 10) && ((TempPlace[i, j] == 2) && (TempPlace[i, j + 1] == 2))) {
-						   if (((j == 0) || ((TempPlace[i, j - 1] != 1)&&(TempPlace[i, j - 1] != 2))) && ((j + 1 == 9) || ((TempPlace[i, j + 2] != 1) && (TempPlace[i, j + 2] != 2)))) {
+						   if (((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) && ((j + 1 == 9) || ((TempPlace[i, j + 2] != 1) && (TempPlace[i, j + 2] != 2)))) {
 							   TempPlace[i, j] = 5;
 							   TempPlace[i, j + 1] = 5;
 							   PrintKilled(i, j, TempPlacePictureBox);
@@ -505,8 +511,8 @@ namespace CouseWork {
 					   else if (TempPlace[i, j] == 2) {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
-							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
-								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   ((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+							   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
 							   PrintKilled(i, j, TempPlacePictureBox);
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
 							   j += 1;
@@ -535,7 +541,6 @@ namespace CouseWork {
 
 			   else {
 				   int Shot_X, Shot_Y;
-				   srand(time(0));
 				   Shot_X = rand() % 10;
 				   Shot_Y = rand() % 10;
 
@@ -545,23 +550,7 @@ namespace CouseWork {
 
 				   }
 				   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
-					   Class1::MyPlace[Shot_X, Shot_Y] = 2;
-
-					   LastShot_X = Shot_X;
-					   LastShot_Y = Shot_Y;
-
-					   PrintWounded(Shot_X, Shot_Y, FirstPictureBox);
-					   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
-
-
-					   CountPartShipFirstPlace++;
-					   FirstShot_X = Shot_X;
-					   FirstShot_Y = Shot_Y;
-
-
-					   CheckNextShot();
-
-
+					   GoodShot2or3Lvl(Shot_X, Shot_Y);
 
 				   }
 				   else if (Class1::MyPlace[Shot_X, Shot_Y] == 0) {
@@ -577,13 +566,7 @@ namespace CouseWork {
 				   LastShot_Y = LastShot_Y - 1;
 				   if ((LastShot_Y > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
-						   Class1::MyPlace[LastShot_X, LastShot_Y] = 2;
-						   PrintWounded(LastShot_X, LastShot_Y, FirstPictureBox);
-
-						   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
-
-
-						   CheckNextShot();
+						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
 					   else if (Class1::MyPlace[LastShot_X, LastShot_Y] == 0) {
 						   Class1::MyPlace[LastShot_X, LastShot_Y] = -1;
@@ -603,13 +586,7 @@ namespace CouseWork {
 				   LastShot_Y = LastShot_Y + 1;
 				   if ((LastShot_Y < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
-						   Class1::MyPlace[LastShot_X, LastShot_Y] = 2;
-						   PrintWounded(LastShot_X, LastShot_Y, FirstPictureBox);
-
-
-						   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
-
-						   CheckNextShot();
+						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
 					   else if (Class1::MyPlace[LastShot_X, LastShot_Y] == 0) {
 						   Class1::MyPlace[LastShot_X, LastShot_Y] = -1;
@@ -630,13 +607,7 @@ namespace CouseWork {
 				   LastShot_X = LastShot_X - 1;
 				   if ((LastShot_X > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
-						   Class1::MyPlace[LastShot_X, LastShot_Y] = 2;
-						   PrintWounded(LastShot_X, LastShot_Y, FirstPictureBox);
-
-
-						   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
-
-						   CheckNextShot();
+						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
 					   else if (Class1::MyPlace[LastShot_X, LastShot_Y] == 0) {
 						   Class1::MyPlace[LastShot_X, LastShot_Y] = -1;
@@ -656,12 +627,7 @@ namespace CouseWork {
 				   LastShot_X = LastShot_X + 1;
 				   if ((LastShot_X < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
-						   Class1::MyPlace[LastShot_X, LastShot_Y] = 2;
-						   PrintWounded(LastShot_X, LastShot_Y, FirstPictureBox);
-
-
-						   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
-						   CheckNextShot();
+						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
 					   else if (Class1::MyPlace[LastShot_X, LastShot_Y] == 0) {
 						   Class1::MyPlace[LastShot_X, LastShot_Y] = -1;
@@ -689,6 +655,53 @@ namespace CouseWork {
 		   }
 
 
+		   void  GoodShot1Lvl(int Temp_X, int Temp_Y) {
+			   Class1::MyPlace[Temp_X, Temp_Y] = 2;
+			   PrintWounded(Temp_X, Temp_Y, FirstPictureBox);
+			   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
+			   CountPartShipFirstPlace++;
+			   RandomShotBot_LightLvl();
+		   }
+
+		   void GoodShot2or3Lvl(int Temp_X, int Temp_Y) {
+
+			   Class1::MyPlace[Temp_X, Temp_Y] = 2;
+			   LastShot_X = Temp_X;
+			   LastShot_Y = Temp_Y;
+			   PrintWounded(Temp_X, Temp_Y, FirstPictureBox);
+			   CheckigKilledShip(Class1::MyPlace, FirstPictureBox);
+			   CountPartShipFirstPlace++;
+			   FirstShot_X = Temp_X;
+			   FirstShot_Y = Temp_Y;
+			   CheckNextShot();
+		   }
+
+
+
+		   void RandomShotBot_DifficultLvl() {
+			   if (Flag == 1)
+			   {
+				   CheckNextShot();
+			   }
+			   else {
+				   int Probability = rand() % 5;
+				   if (Probability == 3) {
+					   int Random_X = rand() % 10;
+					   int Random_Y = rand() % 10;
+					   while (Class1::MyPlace[Random_X, Random_Y] != 1) {
+						   Random_X = rand() % 10;
+						   Random_Y = rand() % 10;
+					   }
+
+					   GoodShot2or3Lvl(Random_X, Random_Y);
+				   }
+				   else {
+					   RandomShotBot_MiddleLvl();
+				   }
+			   }
+
+		   }
+
 		   void ChooseLvlDifficulties() {
 			   if (Class1::ChooseLvl == 1) {
 				   RandomShotBot_LightLvl();
@@ -697,7 +710,7 @@ namespace CouseWork {
 				   RandomShotBot_MiddleLvl();
 			   }
 			   else if (Class1::ChooseLvl == 3) {
-
+				   RandomShotBot_DifficultLvl();
 			   }
 		   }
 

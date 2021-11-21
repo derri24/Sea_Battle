@@ -383,7 +383,7 @@ namespace CouseWork {
 
 						label1->Text = label1->Text + "\r\n";
 						for (int j = 0; j < 10; j++)
-							label1->Text = label1->Text + (Class1::MyPlace[i,j]).ToString();
+							label1->Text = label1->Text + (Class1::MyPlace[j,i]).ToString();
 					}
 
 					CreatePlace10_Form::Text = "2 Игрок";
@@ -840,7 +840,7 @@ namespace CouseWork {
 			   for (int i = 0; i < 10; i++) {
 				   label1->Text = label1->Text + "\r\n";
 				   for (int j = 0; j < 10; j++)
-					   label1->Text = label1->Text + (Class1::MyPlace[i, j]).ToString();
+					   label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
 			   }
 		   }
 
@@ -880,7 +880,7 @@ namespace CouseWork {
 
 			label1->Text = label1->Text + "\r\n";
 			for (int j = 0; j < 10; j++)
-				label1->Text = label1->Text + (Class1::MyPlace[i, j]).ToString();
+				label1->Text = label1->Text + (Class1::MyPlace[j , i]).ToString();
 		}
 
 	}
@@ -906,19 +906,19 @@ namespace CouseWork {
 		   void ChangePlaceShip(int Direction) {
 			   if ((Direction == 115) && (pictureBox2->Top + pictureBox2->Height) > picturebox->Top + picturebox->Height) {
 				   picturebox->Top = picturebox->Top + Smeschenie;
-				   X = X + 1;
+				   Y = Y + 1;
 			   }
 			   else if ((Direction == 119) && (pictureBox2->Top < picturebox->Top)) {
 				   picturebox->Top = picturebox->Top - Smeschenie;
-				   X = X - 1;
+				   Y = Y - 1;
 			   }
 			   else if ((Direction == 100) && (pictureBox2->Left + pictureBox2->Width) > picturebox->Left + picturebox->Width) {
 				   picturebox->Left = picturebox->Left + Smeschenie;
-				   Y = Y + 1;
+				   X = X + 1;
 			   }
 			   else if ((Direction == 97) && (pictureBox2->Left < picturebox->Left)) {
 				   picturebox->Left = picturebox->Left - Smeschenie;
-				   Y = Y - 1;
+				   X = X - 1;
 			   }
 
 		   }
@@ -927,7 +927,7 @@ namespace CouseWork {
 			   int size = 0;
 			   if ((pictureBox2->Top + pictureBox2->Height) < picturebox->Top + picturebox->Height) {
 				   picturebox->Top = pictureBox2->Top + pictureBox2->Height - picturebox->Height;
-				   X = 10 - ChooseShip;
+				   Y = 10 - ChooseShip;
 			   }
 			   else if ((pictureBox2->Top > picturebox->Top)) {
 				   picturebox->Top = pictureBox2->Top;
@@ -935,7 +935,7 @@ namespace CouseWork {
 			   }
 			   else if ((pictureBox2->Left + pictureBox2->Width) < picturebox->Left + picturebox->Width) {
 				   picturebox->Left = pictureBox2->Left + pictureBox2->Width - picturebox->Width;
-				   Y = 10 - ChooseShip;
+				   X = 10 - ChooseShip;
 			   }
 			   else if ((pictureBox2->Left > picturebox->Left)) {
 				   picturebox->Left = pictureBox2->Left;
@@ -982,7 +982,7 @@ namespace CouseWork {
 
 			label1->Text = label1->Text + "\r\n";
 			for (int j = 0; j < 10; j++)
-				label1->Text = label1->Text + (Class1::MyPlace[i, j]).ToString();
+				label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
 		}
 
 

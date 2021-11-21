@@ -400,8 +400,8 @@ namespace CouseWork {
 					   else if (TempPlace[i, j] == 2) {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
-							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
-								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   ((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+								   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
 							   TempPlace[i, j] = 5;
 							   PrintKilled(i, j, TempPlacePictureBox);
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
@@ -489,8 +489,8 @@ namespace CouseWork {
 					   else if (TempPlace[i, j] == 2) {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
-							   (((j == 0)) || (((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
-								   ((j == 9) || (((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))))) {
+							   ((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
+							   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
 							   PrintKilled(i, j, TempPlacePictureBox);
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
 							   j += 1;
