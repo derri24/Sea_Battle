@@ -105,7 +105,7 @@ namespace CouseWork {
 			this->FirstPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->FirstPictureBox->TabIndex = 3;
 			this->FirstPictureBox->TabStop = false;
-			this->FirstPictureBox->Click += gcnew System::EventHandler(this, &PlayInPlace10_Form::pictureBox2_Click);
+			this->FirstPictureBox->Click += gcnew System::EventHandler(this, &PlayInPlace10_Form::FirstPictureBox_Click);
 			this->FirstPictureBox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::FirstPictureBox_MouseClick);
 			// 
 			// LastPictureBox
@@ -117,7 +117,6 @@ namespace CouseWork {
 			this->LastPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->LastPictureBox->TabIndex = 4;
 			this->LastPictureBox->TabStop = false;
-			this->LastPictureBox->Click += gcnew System::EventHandler(this, &PlayInPlace10_Form::pictureBox3_Click);
 			this->LastPictureBox->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &PlayInPlace10_Form::LastPictureBox_MouseClick);
 			// 
 			// pictureBox4
@@ -184,7 +183,6 @@ namespace CouseWork {
 			this->label1->TabIndex = 11;
 			this->label1->Text = L" Поле игрока 1 ";
 			this->label1->UseMnemonic = false;
-			this->label1->Click += gcnew System::EventHandler(this, &PlayInPlace10_Form::label1_Click);
 			// 
 			// label3
 			// 
@@ -233,7 +231,6 @@ namespace CouseWork {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
 			this->Text = L"Ходит 1-й игрок";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &PlayInPlace10_Form::PlayInPlace10_Form_FormClosing);
-			this->Load += gcnew System::EventHandler(this, &PlayInPlace10_Form::PlayInPlace10_Form_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FirstPictureBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LastPictureBox))->EndInit();
@@ -261,15 +258,7 @@ namespace CouseWork {
 		if (result != System::Windows::Forms::DialogResult::OK)
 			e->Cancel = true;
 	}
-	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void pictureBox3_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
 
-	private: System::Void PlayInPlace10_Form_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-
-		  
 
 	private: System::Void GiveUpButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (NumberPlayer == 1) {
@@ -401,7 +390,7 @@ namespace CouseWork {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
 							   ((j == 0) || ((TempPlace[i, j - 1] != 1) && (TempPlace[i, j - 1] != 2))) &&
-								   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
+							   ((j == 9) || ((TempPlace[i, j + 1] != 1) && (TempPlace[i, j + 1] != 2)))) {
 							   TempPlace[i, j] = 5;
 							   PrintKilled(i, j, TempPlacePictureBox);
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
@@ -519,11 +508,12 @@ namespace CouseWork {
 				   System::Windows::Forms::MessageBoxButtons::OK,
 				   System::Windows::Forms::MessageBoxIcon::Error);
 		   }
+
 		   void PrintShot(int X, int Y) {
 			   if (NumberPlayer == 1) {
 				   if (Class1::LastPlace[X, Y] == -1) {
 					   PrintAway(X, Y, LastPictureBox);
-					  
+
 				   }
 				   else if (Class1::LastPlace[X, Y] == 2) {
 					   PrintWounded(X, Y, LastPictureBox);
@@ -544,7 +534,7 @@ namespace CouseWork {
 		   int  CheckPartShipLastPlace(int X, int Y) {
 			   if ((Class1::LastPlace[X, Y - 1] == 2) || (Class1::LastPlace[X, Y + 1] == 2) ||
 				   (Class1::LastPlace[X - 1, Y] == 2) || (Class1::LastPlace[X + 1, Y] == 2)) {
-				   return 0;///ранила
+				   return 0;
 			   }
 			   else
 				   return 1;
@@ -559,19 +549,6 @@ namespace CouseWork {
 				   return 1;
 		   }
 
-		   void CheckShot(int X, int Y) {
-			   if (Class1::FirstPlace[X, Y] == 1) {
-				   if (NumberPlayer == 1) {
-					   //считаем сколько рядом единиц, если потом двоек столько же то закрашиваем, иначе 
-					   Class1::FirstPlace[X, Y] = 2;
-
-				   }
-				   else if (NumberPlayer == 2) {
-
-				   }
-
-			   }
-		   }
 
 		   void DetermineTheWinner() {
 			   if (CountPartShipFirstPlace == 20) {
@@ -593,8 +570,6 @@ namespace CouseWork {
 					   Class1::LastPlace[X, Y] = 2;
 					   PrintShot(X, Y);
 					   CountPartShipLastPlace++;
-					   //ранил
-
 				   }
 				   else if (Class1::LastPlace[X, Y] == 0) {
 					   Class1::LastPlace[X, Y] = -1;
@@ -602,7 +577,6 @@ namespace CouseWork {
 					   NumberPlayer = 2;
 					   PlayInPlace10_Form::Text = "Ходит 2-й игрок";
 					   QueuePlayer->Text = "Ход второго игрока";
-					   //мимо
 				   }
 				   else
 				   {
@@ -619,9 +593,6 @@ namespace CouseWork {
 					   Class1::FirstPlace[X, Y] = 2;
 					   PrintShot(X, Y);
 					   CountPartShipFirstPlace++;
-					   //ранил
-
-
 				   }
 				   else if (Class1::FirstPlace[X, Y] == 0) {
 					   Class1::FirstPlace[X, Y] = -1;
@@ -629,11 +600,9 @@ namespace CouseWork {
 					   NumberPlayer = 1;
 					   PlayInPlace10_Form::Text = "Ходит 1-й игрок";
 					   QueuePlayer->Text = "Ход первого игрока";
-					   //мимо
 				   }
 				   else
 				   {
-
 					   System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
 						   "Вы уже стреляли по этим координатам. Повторите выстрел.",
 						   "Уведомление об ошибке",
@@ -653,8 +622,6 @@ namespace CouseWork {
 		if (NumberPlayer == 2) {
 			int FirstPlace_X = e->Location.X / 33;
 			int FirstPlace_Y = e->Location.Y / 33;
-
-			//	System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show("X: " + FirstPlace_X + "Y: " + FirstPlace_Y);
 			Shot(FirstPlace_X, FirstPlace_Y);
 		}
 		else
@@ -663,9 +630,6 @@ namespace CouseWork {
 				"Уведомление об ошибке",
 				System::Windows::Forms::MessageBoxButtons::OK,
 				System::Windows::Forms::MessageBoxIcon::Error);
-
-
-
 
 	}
 	private: System::Void LastPictureBox_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
@@ -689,9 +653,8 @@ namespace CouseWork {
 
 		}
 
-
 	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void FirstPictureBox_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+};
 }

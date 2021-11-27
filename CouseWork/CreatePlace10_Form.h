@@ -143,8 +143,6 @@ namespace CouseWork {
 			this->pictureBox2->Size = System::Drawing::Size(330, 330);
 			this->pictureBox2->TabIndex = 2;
 			this->pictureBox2->TabStop = false;
-			this->pictureBox2->Click += gcnew System::EventHandler(this, &CreatePlace10_Form::pictureBox2_Click);
-			this->pictureBox2->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &CreatePlace10_Form::pictureBox2_MouseClick);
 			// 
 			// pictureBox3
 			// 
@@ -331,10 +329,13 @@ namespace CouseWork {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->ResumeLayout(false);
-
 		}
 
 #pragma endregion
+		const int PixelSize = 33;
+		const int Smeschenie = 33;
+	
+
 		int CheckClosing = 1;
 		int count_1 = 4;
 		int count_2 = 3;
@@ -344,7 +345,7 @@ namespace CouseWork {
 		int turn = VERTICAL;
 		int CountClick = 1;
 		int Y = 0, X = 0;
-	
+
 		System::Windows::Forms::PictureBox^ picturebox;
 
 
@@ -368,22 +369,24 @@ namespace CouseWork {
 					Ship2_Button->Text = "Двухпалубный: " + count_2;
 					Ship3_Button->Text = "Трёхпалубный: " + count_3;
 					Ship4_Button->Text = "Четырёхпалубный: " + count_4;
+
 					Ship1_Button->Enabled = true;
 					Ship2_Button->Enabled = true;
 					Ship3_Button->Enabled = true;
 					Ship4_Button->Enabled = true;
+
 					for (int i = 0; i < 10; i++) {
 						for (int j = 0; j < 10; j++) {
 							Class1::MyPlace[i, j] = 0;
 						}
 					}
-					//лабел убрать___________
+					//
 					label1->Text = "";
 					for (int i = 0; i < 10; i++) {
 
 						label1->Text = label1->Text + "\r\n";
 						for (int j = 0; j < 10; j++)
-							label1->Text = label1->Text + (Class1::MyPlace[j,i]).ToString();
+							label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
 					}
 
 					CreatePlace10_Form::Text = "2 Игрок";
@@ -455,20 +458,10 @@ namespace CouseWork {
 				e->Cancel = true;
 		}
 	}
-	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	}
-	private: System::Void pictureBox2_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		int res_y = e->Location.Y / 32.8;
-		int res_x = e->Location.X / 30.6;
-		int res = e->Location.X;
-		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show("X: " + res_x + "Y: " + res_y);
-		//if ((MyPlace[7][2] = 1) && (MyPlace[7][3] = 1) && (MyPlace[7][4] = 1))
-		//	по координатам пикчербокса ставлю корабль
-	}
 		   void Ship4(int location)
 		   {
-			   if (location ==  HORIZONTAL) {
+			   if (location == HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 				   Class1::MyPlace[X + 2, Y] = SHIP;
@@ -483,7 +476,7 @@ namespace CouseWork {
 		   }
 		   void Ship3(int location)
 		   {
-			   if (location ==  HORIZONTAL) {
+			   if (location == HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 				   Class1::MyPlace[X + 2, Y] = SHIP;
@@ -497,7 +490,7 @@ namespace CouseWork {
 
 		   void Ship2(int location)
 		   {
-			   if (location ==  HORIZONTAL) {
+			   if (location == HORIZONTAL) {
 				   Class1::MyPlace[X, Y] = SHIP;
 				   Class1::MyPlace[X + 1, Y] = SHIP;
 			   }
@@ -529,10 +522,7 @@ namespace CouseWork {
 				   Ship4(turn);
 			   }
 		   }
-		   const int PixalSize = 33;
-		   const int Smeschenie = 33;
-		   const int ShipLeftStartPosition = 40;
-		   const int ShipTopStartPosition = 51;
+
 
 
 
@@ -541,8 +531,8 @@ namespace CouseWork {
 			Ship4_Button->Text = "Четырёхпалубный: " + --count_4;
 			ChooseShip = 4;
 			picturebox = gcnew System::Windows::Forms::PictureBox();
-			picturebox->Height = PixalSize * 4;
-			picturebox->Width = PixalSize;
+			picturebox->Height = PixelSize * 4;
+			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
 			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\4a.png");
@@ -564,8 +554,8 @@ namespace CouseWork {
 			Ship3_Button->Text = "Трёхпалубный: " + --count_3;
 			ChooseShip = 3;
 			picturebox = gcnew System::Windows::Forms::PictureBox();
-			picturebox->Height = PixalSize * 3;
-			picturebox->Width = PixalSize;
+			picturebox->Height = PixelSize * 3;
+			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
 			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\3a.png");
@@ -586,8 +576,8 @@ namespace CouseWork {
 			Ship2_Button->Text = "Двухпалубный: " + --count_2;
 			ChooseShip = 2;
 			picturebox = gcnew System::Windows::Forms::PictureBox();
-			picturebox->Height = PixalSize * 2;
-			picturebox->Width = PixalSize;
+			picturebox->Height = PixelSize * 2;
+			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
 			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\2a.png");
@@ -608,8 +598,8 @@ namespace CouseWork {
 			Ship1_Button->Text = "Однопалубный: " + --count_1;
 			ChooseShip = 1;
 			picturebox = gcnew System::Windows::Forms::PictureBox();
-			picturebox->Height = PixalSize;
-			picturebox->Width = PixalSize;
+			picturebox->Height = PixelSize;
+			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
 			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\1a.png");
@@ -780,24 +770,22 @@ namespace CouseWork {
 
 		   void PaintingShip() {
 			   picturebox = gcnew System::Windows::Forms::PictureBox();
-			   picturebox->Top = pictureBox2->Top + Y * PixalSize;
-			   picturebox->Left = pictureBox2->Left + X * PixalSize;
+			   picturebox->Top = pictureBox2->Top + Y * PixelSize;
+			   picturebox->Left = pictureBox2->Left + X * PixelSize;
 			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			   Controls->Add(picturebox);
 			   picturebox->BringToFront();
 			   if (turn == VERTICAL) {
 				   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "a.png");
-				   picturebox->Height = PixalSize * ChooseShip;
-				   picturebox->Width = PixalSize;
+				   picturebox->Height = PixelSize * ChooseShip;
+				   picturebox->Width = PixelSize;
 			   }
 			   else if (turn == HORIZONTAL) {
 				   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "b.png");
-				   picturebox->Height = PixalSize;
-				   picturebox->Width = PixalSize * ChooseShip;
+				   picturebox->Height = PixelSize;
+				   picturebox->Width = PixelSize * ChooseShip;
 
 			   }
-
-
 		   }
 
 		   void RandomShipPlace() {
@@ -822,9 +810,7 @@ namespace CouseWork {
 						   CreateShip();
 						   if (CountClick != -1) {
 							   PaintingShip();
-						
 						   }
-							  
 					   }
 					   else {
 						   temp = 1;
@@ -836,6 +822,7 @@ namespace CouseWork {
 			   }
 			   Y = 0;
 			   X = 0;
+			   //
 			   label1->Text = "";
 			   for (int i = 0; i < 10; i++) {
 				   label1->Text = label1->Text + "\r\n";
@@ -843,8 +830,6 @@ namespace CouseWork {
 					   label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
 			   }
 		   }
-
-
 
 	private: System::Void RandomButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		count_1 = 0;
@@ -856,8 +841,6 @@ namespace CouseWork {
 		Ship3_Button->Text = "Трёхпалубный: " + count_3;
 		Ship4_Button->Text = "Четырёхпалубный: " + count_4;
 		RandomShipPlace();
-	
-
 
 	}
 	private: System::Void ClearPlaceButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -869,18 +852,25 @@ namespace CouseWork {
 		Ship2_Button->Text = "Двухпалубный: " + count_2;
 		Ship3_Button->Text = "Трёхпалубный: " + count_3;
 		Ship4_Button->Text = "Четырёхпалубный: " + count_4;
+
+
+		Ship1_Button->Enabled = true;
+		Ship2_Button->Enabled = true;
+		Ship3_Button->Enabled = true;
+		Ship4_Button->Enabled = true;
+
 		for (int i = 0; i < 10; i++)
 			for (int j = 0; j < 10; j++) {
 				Class1::MyPlace[i, j] = 0;
 			}
 		pictureBox2->BringToFront();
-
+		//
 		label1->Text = "";
 		for (int i = 0; i < 10; i++) {
 
 			label1->Text = label1->Text + "\r\n";
 			for (int j = 0; j < 10; j++)
-				label1->Text = label1->Text + (Class1::MyPlace[j , i]).ToString();
+				label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
 		}
 
 	}
@@ -963,8 +953,6 @@ namespace CouseWork {
 				"Уведомление об ошибке",
 				System::Windows::Forms::MessageBoxButtons::OK,
 				System::Windows::Forms::MessageBoxIcon::Error);
-
-
 		}
 		else {
 			CreateShip();
@@ -977,9 +965,9 @@ namespace CouseWork {
 			DownaldShipButton->Enabled = false;
 			TurnShipButton->Enabled = false;
 		}
+		//
 		label1->Text = "";
 		for (int i = 0; i < 10; i++) {
-
 			label1->Text = label1->Text + "\r\n";
 			for (int j = 0; j < 10; j++)
 				label1->Text = label1->Text + (Class1::MyPlace[j, i]).ToString();
@@ -1021,7 +1009,3 @@ namespace CouseWork {
 	}
 	};
 }
-//менять после установки
-// расставить рандомно( отрисовывать пикчербокс и починить)				
-
-//моя

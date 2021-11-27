@@ -312,8 +312,6 @@ namespace CouseWork {
 
 				   }
 			   }
-
-
 		   }
 
 
@@ -344,8 +342,6 @@ namespace CouseWork {
 		   }
 
 
-
-
 		   void PrintKilled(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
 			   picturebox = gcnew System::Windows::Forms::PictureBox();
 			   picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
@@ -357,7 +353,6 @@ namespace CouseWork {
 			   picturebox->Left = PlacePictureBox->Left + PixelSize * Shot_X;
 			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Killed.png");
 		   }
-
 
 
 		   void CheckingKilledHorizontalShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
@@ -374,6 +369,7 @@ namespace CouseWork {
 							   PrintKilled(i + 1, j, TempPlacePictureBox);
 							   PrintKilled(i + 2, j, TempPlacePictureBox);
 							   PrintKilled(i + 3, j, TempPlacePictureBox);
+
 							   PrintOutline(i, j, TempPlace, TempPlacePictureBox);
 							   PrintOutline(i + 1, j, TempPlace, TempPlacePictureBox);
 							   PrintOutline(i + 2, j, TempPlace, TempPlacePictureBox);
@@ -419,6 +415,7 @@ namespace CouseWork {
 						   }
 
 					   }
+
 					   else if (TempPlace[i, j] == 2) {
 						   if (((i == 0) || ((TempPlace[i - 1, j] != 1) && (TempPlace[i - 1, j] != 2))) &&
 							   ((i == 9) || ((TempPlace[i + 1, j] != 1) && (TempPlace[i + 1, j] != 2))) &&
@@ -532,13 +529,10 @@ namespace CouseWork {
 
 
 		   void RandomShotBot_MiddleLvl() {
-
 			   if (Flag == 1)
 			   {
 				   CheckNextShot();
-
 			   }
-
 			   else {
 				   int Shot_X, Shot_Y;
 				   Shot_X = rand() % 10;
@@ -551,7 +545,6 @@ namespace CouseWork {
 				   }
 				   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
 					   GoodShot2or3Lvl(Shot_X, Shot_Y);
-
 				   }
 				   else if (Class1::MyPlace[Shot_X, Shot_Y] == 0) {
 					   Class1::MyPlace[Shot_X, Shot_Y] = -1;
@@ -595,7 +588,6 @@ namespace CouseWork {
 						   Flag = 1;
 						   LastShot_Y = FirstShot_Y;
 					   }
-
 				   }
 				   else {
 					   Flag_Down = 1;
@@ -654,7 +646,6 @@ namespace CouseWork {
 
 		   }
 
-
 		   void  GoodShot1Lvl(int Temp_X, int Temp_Y) {
 			   Class1::MyPlace[Temp_X, Temp_Y] = 2;
 			   PrintWounded(Temp_X, Temp_Y, FirstPictureBox);
@@ -675,8 +666,6 @@ namespace CouseWork {
 			   FirstShot_Y = Temp_Y;
 			   CheckNextShot();
 		   }
-
-
 
 		   void RandomShotBot_DifficultLvl() {
 			   if (Flag == 1)
@@ -730,18 +719,12 @@ namespace CouseWork {
 				   Class1::BotPlace[X, Y] = 2;
 				   PrintMyShot(X, Y);
 				   CheckigKilledShip(Class1::BotPlace, LastPictureBox);
-
 				   CountPartShipLastPlace++;
-				   //ранил
-
 			   }
 			   else if (Class1::BotPlace[X, Y] == 0) {
 				   Class1::BotPlace[X, Y] = -1;
 				   PrintMyShot(X, Y);
-
-				   /*  RandomShotBot_LightLvl();*/
 				   ChooseLvlDifficulties();
-				   //мимо
 			   }
 			   else
 			   {
@@ -762,7 +745,6 @@ namespace CouseWork {
 		int LastPlace_X = e->Location.X / 33;
 		int LastPlace_Y = e->Location.Y / 33;
 		Shot(LastPlace_X, LastPlace_Y);
-
 	}
 	};
 }
