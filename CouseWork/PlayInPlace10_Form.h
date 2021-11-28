@@ -164,7 +164,7 @@ namespace CouseWork {
 			this->GiveUpButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->GiveUpButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"GiveUpButton.Image")));
-			this->GiveUpButton->Location = System::Drawing::Point(14, 444);
+			this->GiveUpButton->Location = System::Drawing::Point(6, 444);
 			this->GiveUpButton->Name = L"GiveUpButton";
 			this->GiveUpButton->Size = System::Drawing::Size(151, 48);
 			this->GiveUpButton->TabIndex = 10;
