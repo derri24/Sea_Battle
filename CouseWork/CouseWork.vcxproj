@@ -127,6 +127,7 @@
     <ClCompile Include="PlaceSelectionForm.cpp" />
     <ClCompile Include="PlayInPlace10WithBot_Form.cpp" />
     <ClCompile Include="PlayInPlace10_Form.cpp" />
+    <ClCompile Include="PlayInPlace15WithBot_Form.cpp" />
     <ClCompile Include="PlayInPlace15_Form.cpp" />
     <ClCompile Include="SelectDifficultlyLevelPlayWithBot.cpp" />
     <ClCompile Include="StartForm.cpp" />
@@ -148,6 +149,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PlayInPlace10_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PlayInPlace15WithBot_Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PlayInPlace15_Form.h">
@@ -178,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlayInPlace10_Form.resx">
       <DependentUpon>PlayInPlace10_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayInPlace15WithBot_Form.resx">
+      <DependentUpon>PlayInPlace15WithBot_Form.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayInPlace15_Form.resx">
       <DependentUpon>PlayInPlace15_Form.h</DependentUpon>

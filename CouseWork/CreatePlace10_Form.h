@@ -512,9 +512,6 @@ namespace CouseWork {
 			   else if (ChooseShip == 2) {
 				   Ship2(turn);
 			   }
-			   else if (ChooseShip == 2) {
-				   Ship2(turn);
-			   }
 			   else if (ChooseShip == 3) {
 				   Ship3(turn);
 			   }

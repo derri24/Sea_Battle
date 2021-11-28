@@ -5,6 +5,7 @@
 #include "ctime"
 #include "stdlib.h"
 #include"PlayInPlace15_Form.h"
+#include"PlayInPlace15WithBot_Form.h"
 
 namespace CouseWork {
 
@@ -346,7 +347,7 @@ namespace CouseWork {
 		
 		if (Class1::ChoosingOpponent == 1) {
 			if (CountClick == 1) {
-				if (count_1 + count_2 + count_3 + count_4+ count_5 == 0) {
+				if (count_1 + count_2 + count_3 + count_4 + count_5 == 0) {
 					CountClick++;
 					Class1::FirstPlace_15 = gcnew array<int, 2>(15, 15);
 					for (int i = 0; i < 15; i++) {
@@ -419,12 +420,12 @@ namespace CouseWork {
 		else if (Class1::ChoosingOpponent == 2) {
 			if (count_1 + count_2 + count_3 + count_4 + count_5 == 0) {
 				this->Hide();
-				//PlayInPlace15WithBot_Form^ Temp = gcnew PlayInPlace15WithBot_Form();
-				/*Temp->Top = this->Top;
+				PlayInPlace15WithBot_Form^ Temp = gcnew PlayInPlace15WithBot_Form();
+				Temp->Top = this->Top;
 				Temp->Left = this->Left;
 				Temp->ShowDialog();
 				CheckClosing = 0;
-				this->Close();*/
+				this->Close();
 			}
 			else {
 				System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
@@ -631,9 +632,6 @@ namespace CouseWork {
 		   void CreateShip() {
 			   if (ChooseShip == 1) {
 				   Ship1();
-			   }
-			   else if (ChooseShip == 2) {
-				   Ship2(turn);
 			   }
 			   else if (ChooseShip == 2) {
 				   Ship2(turn);

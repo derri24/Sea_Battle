@@ -48,7 +48,7 @@ namespace CouseWork {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -148,40 +148,40 @@ namespace CouseWork {
 		Temp->ShowDialog();
 		CheckClosing = 0;
 		this->Close();
-		
-	}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	Class1::ChooseLvl = 2;
-	this->Hide();
-	PlaceSelectionForm^ Temp = gcnew PlaceSelectionForm();
-	Temp->Top = this->Top;
-	Temp->Left = this->Left;
-	Temp->ShowDialog();
-	CheckClosing = 0;
-	this->Close();
-	
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	Class1::ChooseLvl = 3;
-	this->Hide();
-	PlaceSelectionForm^ Temp = gcnew PlaceSelectionForm();
-	Temp->Top = this->Top;
-	Temp->Left = this->Left;
-	Temp->ShowDialog();
-	CheckClosing = 0;
-	this->Close();
-}
-private: System::Void SelectDifficultlyLevelPlayWithBot_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-	if (CheckClosing != 0) {
-		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
-			"Изменения не будут сохранены. Вы действительно желаете выйти?",
-			"Уведомление",
-			System::Windows::Forms::MessageBoxButtons::OKCancel,
-			System::Windows::Forms::MessageBoxIcon::Warning);
 
-		if (result != System::Windows::Forms::DialogResult::OK)
-			e->Cancel = true;
 	}
-}
-};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Class1::ChooseLvl = 2;
+		this->Hide();
+		PlaceSelectionForm^ Temp = gcnew PlaceSelectionForm();
+		Temp->Top = this->Top;
+		Temp->Left = this->Left;
+		Temp->ShowDialog();
+		CheckClosing = 0;
+		this->Close();
+
+	}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		Class1::ChooseLvl = 3;
+		this->Hide();
+		PlaceSelectionForm^ Temp = gcnew PlaceSelectionForm();
+		Temp->Top = this->Top;
+		Temp->Left = this->Left;
+		Temp->ShowDialog();
+		CheckClosing = 0;
+		this->Close();
+	}
+	private: System::Void SelectDifficultlyLevelPlayWithBot_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		if (CheckClosing != 0) {
+			System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+				"Изменения не будут сохранены. Вы действительно желаете выйти?",
+				"Уведомление",
+				System::Windows::Forms::MessageBoxButtons::OKCancel,
+				System::Windows::Forms::MessageBoxIcon::Warning);
+
+			if (result != System::Windows::Forms::DialogResult::OK)
+				e->Cancel = true;
+		}
+	}
+	};
 }
