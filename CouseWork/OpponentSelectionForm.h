@@ -65,9 +65,9 @@ namespace CouseWork {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-16, -11);
+			this->pictureBox1->Location = System::Drawing::Point(-17, -21);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(488, 304);
+			this->pictureBox1->Size = System::Drawing::Size(462, 292);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
@@ -77,9 +77,9 @@ namespace CouseWork {
 			this->RobotPlayButton->Font = (gcnew System::Drawing::Font(L"Georgia", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->RobotPlayButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"RobotPlayButton.Image")));
-			this->RobotPlayButton->Location = System::Drawing::Point(85, 133);
+			this->RobotPlayButton->Location = System::Drawing::Point(63, 133);
 			this->RobotPlayButton->Name = L"RobotPlayButton";
-			this->RobotPlayButton->Size = System::Drawing::Size(317, 61);
+			this->RobotPlayButton->Size = System::Drawing::Size(315, 50);
 			this->RobotPlayButton->TabIndex = 1;
 			this->RobotPlayButton->Text = L"Играть с ботом";
 			this->RobotPlayButton->UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@ namespace CouseWork {
 			this->FriendPlayButton->Font = (gcnew System::Drawing::Font(L"Georgia", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->FriendPlayButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"FriendPlayButton.Image")));
-			this->FriendPlayButton->Location = System::Drawing::Point(85, 200);
+			this->FriendPlayButton->Location = System::Drawing::Point(63, 189);
 			this->FriendPlayButton->Name = L"FriendPlayButton";
-			this->FriendPlayButton->Size = System::Drawing::Size(317, 61);
+			this->FriendPlayButton->Size = System::Drawing::Size(315, 51);
 			this->FriendPlayButton->TabIndex = 2;
 			this->FriendPlayButton->Text = L"Играть с другом";
 			this->FriendPlayButton->UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@ namespace CouseWork {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(470, 273);
+			this->ClientSize = System::Drawing::Size(441, 250);
 			this->Controls->Add(this->FriendPlayButton);
 			this->Controls->Add(this->RobotPlayButton);
 			this->Controls->Add(this->pictureBox1);
@@ -119,7 +119,8 @@ namespace CouseWork {
 
 		}
 #pragma endregion
-		int CheckClosing=1;
+		int CheckClosing = 1;
+
 	private: System::Void RobotPlayButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		Class1::ChoosingOpponent = 2;
 		this->Hide();
@@ -143,12 +144,11 @@ namespace CouseWork {
 	}
 	private: System::Void OpponentSelectionForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		if (CheckClosing != 0) {
-		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
-			"Изменения не будут сохранены. Вы действительно желаете выйти?",
-			"Уведомление",
-			System::Windows::Forms::MessageBoxButtons::OKCancel,
-			System::Windows::Forms::MessageBoxIcon::Warning);
-	
+			System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+				"Изменения не будут сохранены. Вы действительно желаете выйти?",
+				"Уведомление",
+				System::Windows::Forms::MessageBoxButtons::OKCancel,
+				System::Windows::Forms::MessageBoxIcon::Warning);
 			if (result != System::Windows::Forms::DialogResult::OK)
 				e->Cancel = true;
 		}

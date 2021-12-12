@@ -49,12 +49,16 @@ namespace CouseWork {
 	private: System::Windows::Forms::PictureBox^ FirstPictureBox;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ помощьToolStripMenuItem;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -63,6 +67,7 @@ namespace CouseWork {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PlayInPlace15WithBot_Form::typeid));
 			this->GiveUpButton = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -75,6 +80,9 @@ namespace CouseWork {
 			this->FirstPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->помощьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
@@ -82,6 +90,7 @@ namespace CouseWork {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FirstPictureBox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// GiveUpButton
@@ -89,7 +98,7 @@ namespace CouseWork {
 			this->GiveUpButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->GiveUpButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"GiveUpButton.Image")));
-			this->GiveUpButton->Location = System::Drawing::Point(19, 571);
+			this->GiveUpButton->Location = System::Drawing::Point(19, 591);
 			this->GiveUpButton->Name = L"GiveUpButton";
 			this->GiveUpButton->Size = System::Drawing::Size(151, 48);
 			this->GiveUpButton->TabIndex = 42;
@@ -102,7 +111,7 @@ namespace CouseWork {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label3.Image")));
-			this->label3->Location = System::Drawing::Point(616, 16);
+			this->label3->Location = System::Drawing::Point(616, 36);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(131, 25);
 			this->label3->TabIndex = 41;
@@ -114,7 +123,7 @@ namespace CouseWork {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
-			this->label1->Location = System::Drawing::Point(16, 16);
+			this->label1->Location = System::Drawing::Point(16, 36);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(115, 25);
 			this->label1->TabIndex = 40;
@@ -136,7 +145,7 @@ namespace CouseWork {
 			// pictureBox8
 			// 
 			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(19, 67);
+			this->pictureBox8->Location = System::Drawing::Point(19, 87);
 			this->pictureBox8->Name = L"pictureBox8";
 			this->pictureBox8->Size = System::Drawing::Size(24, 498);
 			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -146,7 +155,7 @@ namespace CouseWork {
 			// pictureBox7
 			// 
 			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(619, 73);
+			this->pictureBox7->Location = System::Drawing::Point(619, 93);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(24, 492);
 			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -156,7 +165,7 @@ namespace CouseWork {
 			// pictureBox5
 			// 
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(649, 44);
+			this->pictureBox5->Location = System::Drawing::Point(649, 64);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(495, 21);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -166,7 +175,7 @@ namespace CouseWork {
 			// LastPictureBox
 			// 
 			this->LastPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"LastPictureBox.Image")));
-			this->LastPictureBox->Location = System::Drawing::Point(649, 70);
+			this->LastPictureBox->Location = System::Drawing::Point(649, 90);
 			this->LastPictureBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->LastPictureBox->Name = L"LastPictureBox";
 			this->LastPictureBox->Size = System::Drawing::Size(495, 495);
@@ -177,7 +186,7 @@ namespace CouseWork {
 			// FirstPictureBox
 			// 
 			this->FirstPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"FirstPictureBox.Image")));
-			this->FirstPictureBox->Location = System::Drawing::Point(49, 70);
+			this->FirstPictureBox->Location = System::Drawing::Point(49, 90);
 			this->FirstPictureBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->FirstPictureBox->Name = L"FirstPictureBox";
 			this->FirstPictureBox->Size = System::Drawing::Size(495, 495);
@@ -187,7 +196,7 @@ namespace CouseWork {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(47, 44);
+			this->pictureBox4->Location = System::Drawing::Point(47, 64);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(497, 21);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -197,18 +206,43 @@ namespace CouseWork {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-39, -93);
+			this->pictureBox1->Location = System::Drawing::Point(-39, -73);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(1297, 879);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 32;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &PlayInPlace15WithBot_Form::pictureBox1_Click);
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->помощьToolStripMenuItem });
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(1166, 28);
+			this->menuStrip1->TabIndex = 43;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// помощьToolStripMenuItem
+			// 
+			this->помощьToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Georgia", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->помощьToolStripMenuItem->Name = L"помощьToolStripMenuItem";
+			this->помощьToolStripMenuItem->Size = System::Drawing::Size(90, 24);
+			this->помощьToolStripMenuItem->Text = L"Помощь";
+			this->помощьToolStripMenuItem->Click += gcnew System::EventHandler(this, &PlayInPlace15WithBot_Form::помощьToolStripMenuItem_Click);
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
 			// PlayInPlace15WithBot_Form
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
-			this->ClientSize = System::Drawing::Size(1166, 628);
+			this->ClientSize = System::Drawing::Size(1166, 649);
 			this->Controls->Add(this->GiveUpButton);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label1);
@@ -219,9 +253,11 @@ namespace CouseWork {
 			this->Controls->Add(this->LastPictureBox);
 			this->Controls->Add(this->FirstPictureBox);
 			this->Controls->Add(this->pictureBox4);
+			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->pictureBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"PlayInPlace15WithBot_Form";
@@ -234,7 +270,10 @@ namespace CouseWork {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->FirstPictureBox))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -254,7 +293,7 @@ namespace CouseWork {
 		if (CountPartShipLastPlace != 35) {
 			CountPartShipFirstPlace = 35;
 			System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
-				"Победил бот!!",
+				"Победил бот!!!",
 				"Уведомление о победе",
 				System::Windows::Forms::MessageBoxButtons::OK);
 		}
@@ -269,7 +308,7 @@ namespace CouseWork {
 					picturebox->Width = 33;
 					picturebox->Top = FirstPictureBox->Top + PixelSize * j;
 					picturebox->Left = FirstPictureBox->Left + PixelSize * i;
-					picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\1a.png");
+					picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\1a.png"));
 					picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 					Controls->Add(picturebox);
 					picturebox->BringToFront();
@@ -296,7 +335,7 @@ namespace CouseWork {
 			   Shot_X = rand() % 15;
 			   Shot_Y = rand() % 15;
 
-			   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1)) {
+			   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) {
 				   Shot_X = rand() % 15;
 				   Shot_Y = rand() % 15;
 			   }
@@ -336,7 +375,7 @@ namespace CouseWork {
 			   picturebox->Width = 33;
 			   picturebox->Top = PlacePictureBox->Top + PixelSize * Shot_Y;
 			   picturebox->Left = PlacePictureBox->Left + PixelSize * Shot_X;
-			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Wounded.png");
+			   picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\Wounded.png"));
 		   }
 
 		   void PrintAway(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
@@ -348,7 +387,7 @@ namespace CouseWork {
 			   picturebox->Width = 13;
 			   picturebox->Top = PlacePictureBox->Top + 10 + PixelSize * Shot_Y;
 			   picturebox->Left = PlacePictureBox->Left + 10 + PixelSize * Shot_X;
-			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Away.png");
+			   picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\Away.png"));
 		   }
 
 
@@ -361,7 +400,7 @@ namespace CouseWork {
 			   picturebox->Width = 33;
 			   picturebox->Top = PlacePictureBox->Top + PixelSize * Shot_Y;
 			   picturebox->Left = PlacePictureBox->Left + PixelSize * Shot_X;
-			   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\Killed.png");
+			   picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\Killed.png"));
 		   }
 
 		   void CheckingKilledHorizontalShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
@@ -600,7 +639,7 @@ namespace CouseWork {
 				   Shot_X = rand() % 15;
 				   Shot_Y = rand() % 15;
 
-				   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1)) {
+				   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) {
 					   Shot_X = rand() % 15;
 					   Shot_Y = rand() % 15;
 
@@ -808,5 +847,14 @@ namespace CouseWork {
 		int LastPlace_Y = e->Location.Y / 33;
 		Shot(LastPlace_X, LastPlace_Y);
 	}
-};
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void помощьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+			"ПРАВИЛА ИГРЫ:\nвыстрелы проиcходят поочередно в\nслучае, если выстрел является успешным,\nстрелявший игрок повторяет выстрел, в\nобратном случае,стреляет слудующий ирок.\nОбозначения: \n  1)черная точка - МИМО\n  2)обводка оранжевым - РАНИЛ\n  3)обводка красным - УБИЛ",
+			"Помощь",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Information);
+	}
+	};
 }

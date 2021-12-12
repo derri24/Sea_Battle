@@ -64,9 +64,9 @@ namespace CouseWork {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-11, -28);
+			this->pictureBox1->Location = System::Drawing::Point(-17, -28);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(480, 329);
+			this->pictureBox1->Size = System::Drawing::Size(465, 313);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
@@ -76,11 +76,11 @@ namespace CouseWork {
 			this->Place10_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Place10_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Place10_Button.Image")));
-			this->Place10_Button->Location = System::Drawing::Point(73, 123);
+			this->Place10_Button->Location = System::Drawing::Point(58, 123);
 			this->Place10_Button->Name = L"Place10_Button";
-			this->Place10_Button->Size = System::Drawing::Size(317, 61);
+			this->Place10_Button->Size = System::Drawing::Size(317, 50);
 			this->Place10_Button->TabIndex = 2;
-			this->Place10_Button->Text = L"Поле 10*10";
+			this->Place10_Button->Text = L"Поле 10 х 10";
 			this->Place10_Button->UseVisualStyleBackColor = true;
 			this->Place10_Button->Click += gcnew System::EventHandler(this, &PlaceSelectionForm::Place10_Button_Click);
 			// 
@@ -89,11 +89,11 @@ namespace CouseWork {
 			this->Place15_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 19.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Place15_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Place15_Button.Image")));
-			this->Place15_Button->Location = System::Drawing::Point(73, 190);
+			this->Place15_Button->Location = System::Drawing::Point(58, 179);
 			this->Place15_Button->Name = L"Place15_Button";
-			this->Place15_Button->Size = System::Drawing::Size(317, 61);
+			this->Place15_Button->Size = System::Drawing::Size(317, 51);
 			this->Place15_Button->TabIndex = 3;
-			this->Place15_Button->Text = L"Поле 15*15";
+			this->Place15_Button->Text = L"Поле 15 х 15";
 			this->Place15_Button->UseVisualStyleBackColor = true;
 			this->Place15_Button->Click += gcnew System::EventHandler(this, &PlaceSelectionForm::Place15_Button_Click);
 			// 
@@ -101,7 +101,7 @@ namespace CouseWork {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(463, 261);
+			this->ClientSize = System::Drawing::Size(441, 243);
 			this->Controls->Add(this->Place15_Button);
 			this->Controls->Add(this->Place10_Button);
 			this->Controls->Add(this->pictureBox1);
