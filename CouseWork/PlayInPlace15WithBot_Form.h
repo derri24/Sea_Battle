@@ -212,7 +212,6 @@ namespace CouseWork {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 32;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &PlayInPlace15WithBot_Form::pictureBox1_Click);
 			// 
 			// menuStrip1
 			// 
@@ -332,18 +331,28 @@ namespace CouseWork {
 
 		   void RandomShotBot_LightLvl() {
 			   int Shot_X, Shot_Y;
+			   int Count = 0;
+			   int CoordinateFlag = 0;
 			   Shot_X = rand() % 15;
 			   Shot_Y = rand() % 15;
 
-			   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) {
+			   while (((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) && (Count < 100)) {
 				   Shot_X = rand() % 15;
 				   Shot_Y = rand() % 15;
+				   Count++;
 			   }
+			   if (Count > 99)
+				   for (int i = 0; ((CoordinateFlag != 1) && (i < 14)); i++) {
+					   for (int j = 0; ((CoordinateFlag != 1) && (j < 14)); j++) {
+						   if ((Class1::MyPlace_15[i, j] == 0) || (Class1::MyPlace_15[i, j] == 1)) {
+							   Shot_X == i;
+							   Shot_Y = j;
+							   CoordinateFlag = 1;
+						   }
+					   }
+				   }
 			   if (Class1::MyPlace_15[Shot_X, Shot_Y] == 1) {
 				   GoodShot1Lvl(Shot_X, Shot_Y);
-
-
-				   CountPartShipFirstPlace++;
 				   RandomShotBot_LightLvl();
 			   }
 			   else if (Class1::MyPlace_15[Shot_X, Shot_Y] == 0) {
@@ -353,6 +362,80 @@ namespace CouseWork {
 
 		   }
 
+		   void RandomShotBot_MiddleLvl() {
+			   int Count = 0;
+			   int CoordinateFlag = 0;
+			   if (Flag == 1)
+			   {
+				   CheckNextShot();
+			   }
+			   else {
+				   int Shot_X, Shot_Y;
+				   Shot_X = rand() % 15;
+				   Shot_Y = rand() % 15;
+
+				   while (((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) && (Count < 100)) {
+					   Shot_X = rand() % 15;
+					   Shot_Y = rand() % 15;
+					   Count++;
+
+				   }
+				   if (Count > 99)
+					   for (int i = 0; ((CoordinateFlag != 1) && (i < 14)); i++) {
+						   for (int j = 0; ((CoordinateFlag != 1) && (j < 14)); j++) {
+							   if ((Class1::MyPlace_15[i, j] == 0) || (Class1::MyPlace_15[i, j] == 1)) {
+								   Shot_X == i;
+								   Shot_Y = j;
+								   CoordinateFlag = 1;
+							   }
+						   }
+					   }
+				   if (Class1::MyPlace_15[Shot_X, Shot_Y] == 1) {
+					   GoodShot2or3Lvl(Shot_X, Shot_Y);
+				   }
+				   else if (Class1::MyPlace_15[Shot_X, Shot_Y] == 0) {
+					   Class1::MyPlace_15[Shot_X, Shot_Y] = -1;
+					   PrintAway(Shot_X, Shot_Y, FirstPictureBox);
+				   }
+			   }
+		   }
+
+
+		   void RandomShotBot_DifficultLvl() {
+			   int Count = 0;
+			   int CoordinateFlag = 0;
+			   if (Flag == 1)
+			   {
+				   CheckNextShot();
+			   }
+			   else {
+				   int Probability = rand() % 4;
+				   if (Probability == 3) {
+					   int Random_X = rand() % 15;
+					   int Random_Y = rand() % 15;
+					   while ((Class1::MyPlace_15[Random_X, Random_Y] != 1) && (Count < 100)) {
+						   Random_X = rand() % 15;
+						   Random_Y = rand() % 15;
+						   Count++;
+					   }
+					   if (Count > 99)
+						   for (int i = 0; ((CoordinateFlag != 1) && (i < 14)); i++) {
+							   for (int j = 0; ((CoordinateFlag != 1) && (j < 14)); j++) {
+								   if ((Class1::MyPlace_15[i, j] == 0) || (Class1::MyPlace_15[i, j] == 1)) {
+									   Random_X == i;
+									   Random_Y = j;
+									   CoordinateFlag = 1;
+								   }
+							   }
+						   }
+					   GoodShot2or3Lvl(Random_X, Random_Y);
+				   }
+				   else {
+					   RandomShotBot_MiddleLvl();
+				   }
+			   }
+
+		   }
 
 		   void PrintOutline(int Temp_X, int Temp_Y, array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
 			   for (int i = Temp_X - 1; i <= Temp_X + 1; i++) {
@@ -623,41 +706,16 @@ namespace CouseWork {
 
 		   }
 
-
 		   void CheckigKilledShip(array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
 			   CheckingKilledHorizontalShip(TempPlace, TempPlacePictureBox);
 			   CheckingKilledVerticalShip(TempPlace, TempPlacePictureBox);
 		   }
 
-		   void RandomShotBot_MiddleLvl() {
-			   if (Flag == 1)
-			   {
-				   CheckNextShot();
-			   }
-			   else {
-				   int Shot_X, Shot_Y;
-				   Shot_X = rand() % 15;
-				   Shot_Y = rand() % 15;
-
-				   while ((Class1::MyPlace_15[Shot_X, Shot_Y] == 2) || (Class1::MyPlace_15[Shot_X, Shot_Y] == -1) || (Class1::MyPlace_15[Shot_X, Shot_Y] == 5)) {
-					   Shot_X = rand() % 15;
-					   Shot_Y = rand() % 15;
-
-				   }
-				   if (Class1::MyPlace_15[Shot_X, Shot_Y] == 1) {
-					   GoodShot2or3Lvl(Shot_X, Shot_Y);
-				   }
-				   else if (Class1::MyPlace_15[Shot_X, Shot_Y] == 0) {
-					   Class1::MyPlace_15[Shot_X, Shot_Y] = -1;
-					   PrintAway(Shot_X, Shot_Y, FirstPictureBox);
-				   }
-			   }
-		   }
 
 		   void CheckNextShot() {
 			   if (Flag_Top == 0) {
 				   LastShot_Y = LastShot_Y - 1;
-				   if ((LastShot_Y > -1) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_Y > -1) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace_15[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -677,7 +735,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Down == 0) {
 				   LastShot_Y = LastShot_Y + 1;
-				   if ((LastShot_Y < 15) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_Y < 15) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace_15[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -697,7 +755,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Left == 0) {
 				   LastShot_X = LastShot_X - 1;
-				   if ((LastShot_X > -1) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_X > -1) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace_15[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -717,7 +775,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Right == 0) {
 				   LastShot_X = LastShot_X + 1;
-				   if ((LastShot_X < 15) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_X < 15) && ((Class1::MyPlace_15[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace_15[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace_15[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -767,29 +825,6 @@ namespace CouseWork {
 			   CheckNextShot();
 		   }
 
-		   void RandomShotBot_DifficultLvl() {
-			   if (Flag == 1)
-			   {
-				   CheckNextShot();
-			   }
-			   else {
-				   int Probability = rand() % 4;
-				   if (Probability == 3) {
-					   int Random_X = rand() % 15;
-					   int Random_Y = rand() % 15;
-					   while (Class1::MyPlace_15[Random_X, Random_Y] != 1) {
-						   Random_X = rand() % 15;
-						   Random_Y = rand() % 15;
-					   }
-
-					   GoodShot2or3Lvl(Random_X, Random_Y);
-				   }
-				   else {
-					   RandomShotBot_MiddleLvl();
-				   }
-			   }
-
-		   }
 
 		   void ChooseLvlDifficulties() {
 			   if (Class1::ChooseLvl == 1) {
@@ -811,7 +846,6 @@ namespace CouseWork {
 			   else if (Class1::BotPlace_15[X, Y] == 2) {
 				   PrintWounded(X, Y, LastPictureBox);
 				   CheckigKilledShip(Class1::BotPlace_15, LastPictureBox);
-
 			   }
 		   }
 
@@ -846,8 +880,6 @@ namespace CouseWork {
 		int LastPlace_X = e->Location.X / 33;
 		int LastPlace_Y = e->Location.Y / 33;
 		Shot(LastPlace_X, LastPlace_Y);
-	}
-	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void помощьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(

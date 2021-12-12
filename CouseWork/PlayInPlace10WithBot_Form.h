@@ -318,18 +318,28 @@ namespace CouseWork {
 
 		   void RandomShotBot_LightLvl() {
 			   int Shot_X, Shot_Y;
+			   int Count = 0;
+			   int CoordinateFlag = 0;
 			   Shot_X = rand() % 10;
 			   Shot_Y = rand() % 10;
 
-			   while ((Class1::MyPlace[Shot_X, Shot_Y] == 2) || (Class1::MyPlace[Shot_X, Shot_Y] == -1) || (Class1::MyPlace[Shot_X, Shot_Y] == 5)) {
+			   while (((Class1::MyPlace[Shot_X, Shot_Y] == 2) || (Class1::MyPlace[Shot_X, Shot_Y] == -1) || (Class1::MyPlace[Shot_X, Shot_Y] == 5)) && (Count < 100)) {
 				   Shot_X = rand() % 10;
 				   Shot_Y = rand() % 10;
+				   Count++;
 			   }
+			   if (Count > 99)
+				   for (int i = 0; ((CoordinateFlag != 1) && (i < 9)); i++) {
+					   for (int j = 0; ((CoordinateFlag != 1) && (j < 9)); j++) {
+						   if ((Class1::MyPlace[i, j] == 0) || (Class1::MyPlace[i, j] == 1)) {
+							   Shot_X == i;
+							   Shot_Y = j;
+							   CoordinateFlag = 1;
+						   }
+					   }
+				   }
 			   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
 				   GoodShot1Lvl(Shot_X, Shot_Y);
-
-
-				   CountPartShipFirstPlace++;
 				   RandomShotBot_LightLvl();
 			   }
 			   else if (Class1::MyPlace[Shot_X, Shot_Y] == 0) {
@@ -339,6 +349,79 @@ namespace CouseWork {
 
 		   }
 
+
+		   void RandomShotBot_MiddleLvl() {
+			   int Count = 0;
+			   int CoordinateFlag = 0;
+			   if (Flag == 1)
+			   {
+				   CheckNextShot();
+			   }
+			   else {
+				   int Shot_X, Shot_Y;
+				   Shot_X = rand() % 10;
+				   Shot_Y = rand() % 10;
+
+				   while (((Class1::MyPlace[Shot_X, Shot_Y] == 2) || (Class1::MyPlace[Shot_X, Shot_Y] == -1) || (Class1::MyPlace[Shot_X, Shot_Y] == 5)) && (Count < 100)) {
+					   Shot_X = rand() % 10;
+					   Shot_Y = rand() % 10;
+					   Count++;
+				   }
+				   if (Count > 99)
+					   for (int i = 0; ((CoordinateFlag != 1) && (i < 9)); i++) {
+						   for (int j = 0; ((CoordinateFlag != 1) && (j < 9)); j++) {
+							   if ((Class1::MyPlace[i, j] == 0) || (Class1::MyPlace[i, j] == 1)) {
+								   Shot_X == i;
+								   Shot_Y = j;
+								   CoordinateFlag = 1;
+							   }
+						   }
+					   }
+				   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
+					   GoodShot2or3Lvl(Shot_X, Shot_Y);
+				   }
+				   else if (Class1::MyPlace[Shot_X, Shot_Y] == 0) {
+					   Class1::MyPlace[Shot_X, Shot_Y] = -1;
+					   PrintAway(Shot_X, Shot_Y, FirstPictureBox);
+				   }
+			   }
+		   }
+
+		   void RandomShotBot_DifficultLvl() {
+			   int Count = 0;
+			   int CoordinateFlag = 0;
+			   if (Flag == 1)
+			   {
+				   CheckNextShot();
+			   }
+			   else {
+				   int Probability = rand() % 5;
+				   if (Probability == 3) {
+					   int Random_X = rand() % 10;
+					   int Random_Y = rand() % 10;
+					   while ((Class1::MyPlace[Random_X, Random_Y] != 1) && (Count < 100)) {
+						   Random_X = rand() % 10;
+						   Random_Y = rand() % 10;
+						   Count++;
+					   }
+					   if (Count > 99)
+						   for (int i = 0; ((CoordinateFlag != 1) && (i < 9)); i++) {
+							   for (int j = 0; ((CoordinateFlag != 1) && (j < 9)); j++) {
+								   if ((Class1::MyPlace[i, j] == 0) || (Class1::MyPlace[i, j] == 1)) {
+									   Random_X == i;
+									   Random_Y = j;
+									   CoordinateFlag = 1;
+								   }
+							   }
+						   }
+					   GoodShot2or3Lvl(Random_X, Random_Y);
+				   }
+				   else {
+					   RandomShotBot_MiddleLvl();
+				   }
+			   }
+
+		   }
 
 
 		   void PrintOutline(int Temp_X, int Temp_Y, array<int, 2>^ TempPlace, System::Windows::Forms::PictureBox^ TempPlacePictureBox) {
@@ -352,9 +435,6 @@ namespace CouseWork {
 				   }
 			   }
 		   }
-
-
-
 
 		   void PrintWounded(int Shot_X, int Shot_Y, System::Windows::Forms::PictureBox^ PlacePictureBox) {
 			   picturebox = gcnew System::Windows::Forms::PictureBox();
@@ -567,36 +647,11 @@ namespace CouseWork {
 		   }
 
 
-		   void RandomShotBot_MiddleLvl() {
-			   if (Flag == 1)
-			   {
-				   CheckNextShot();
-			   }
-			   else {
-				   int Shot_X, Shot_Y;
-				   Shot_X = rand() % 10;
-				   Shot_Y = rand() % 10;
-
-				   while ((Class1::MyPlace[Shot_X, Shot_Y] == 2) || (Class1::MyPlace[Shot_X, Shot_Y] == -1) || (Class1::MyPlace[Shot_X, Shot_Y] == 5)) {
-					   Shot_X = rand() % 10;
-					   Shot_Y = rand() % 10;
-
-				   }
-				   if (Class1::MyPlace[Shot_X, Shot_Y] == 1) {
-					   GoodShot2or3Lvl(Shot_X, Shot_Y);
-				   }
-				   else if (Class1::MyPlace[Shot_X, Shot_Y] == 0) {
-					   Class1::MyPlace[Shot_X, Shot_Y] = -1;
-					   PrintAway(Shot_X, Shot_Y, FirstPictureBox);
-				   }
-			   }
-		   }
-
 
 		   void CheckNextShot() {
 			   if (Flag_Top == 0) {
 				   LastShot_Y = LastShot_Y - 1;
-				   if ((LastShot_Y > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_Y > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2)&& (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -616,7 +671,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Down == 0) {
 				   LastShot_Y = LastShot_Y + 1;
-				   if ((LastShot_Y < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_Y < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -636,7 +691,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Left == 0) {
 				   LastShot_X = LastShot_X - 1;
-				   if ((LastShot_X > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_X > -1) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -656,7 +711,7 @@ namespace CouseWork {
 			   }
 			   else if (Flag_Right == 0) {
 				   LastShot_X = LastShot_X + 1;
-				   if ((LastShot_X < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) || (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
+				   if ((LastShot_X < 10) && ((Class1::MyPlace[LastShot_X, LastShot_Y] != 2) && (Class1::MyPlace[LastShot_X, LastShot_Y] != -1))) {
 					   if (Class1::MyPlace[LastShot_X, LastShot_Y] == 1) {
 						   GoodShot2or3Lvl(LastShot_X, LastShot_Y);
 					   }
@@ -706,30 +761,6 @@ namespace CouseWork {
 			   CheckNextShot();
 		   }
 
-		   void RandomShotBot_DifficultLvl() {
-			   if (Flag == 1)
-			   {
-				   CheckNextShot();
-			   }
-			   else {
-				   int Probability = rand() % 5;
-				   if (Probability == 3) {
-					   int Random_X = rand() % 10;
-					   int Random_Y = rand() % 10;
-					   while (Class1::MyPlace[Random_X, Random_Y] != 1) {
-						   Random_X = rand() % 10;
-						   Random_Y = rand() % 10;
-					   }
-
-					   GoodShot2or3Lvl(Random_X, Random_Y);
-				   }
-				   else {
-					   RandomShotBot_MiddleLvl();
-				   }
-			   }
-
-		   }
-
 		   void ChooseLvlDifficulties() {
 			   if (Class1::ChooseLvl == 1) {
 				   RandomShotBot_LightLvl();
@@ -773,7 +804,6 @@ namespace CouseWork {
 					   System::Windows::Forms::MessageBoxButtons::OK,
 					   System::Windows::Forms::MessageBoxIcon::Error);
 			   }
-
 			   DetermineTheWinner();
 		   }
 
@@ -791,7 +821,6 @@ namespace CouseWork {
 			"Помощь",
 			System::Windows::Forms::MessageBoxButtons::OK,
 			System::Windows::Forms::MessageBoxIcon::Information);
-	
 	}
-};
+	};
 }

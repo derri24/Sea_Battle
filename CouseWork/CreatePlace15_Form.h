@@ -57,6 +57,8 @@ namespace CouseWork {
 	private: System::Windows::Forms::Button^ Ship5_Button;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::Button^ DownaldShipButton;
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ помощьToolStripMenuItem;
 
 
 	protected:
@@ -89,10 +91,13 @@ namespace CouseWork {
 			this->Ship5_Button = (gcnew System::Windows::Forms::Button());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->DownaldShipButton = (gcnew System::Windows::Forms::Button());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->помощьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -100,7 +105,7 @@ namespace CouseWork {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(564, 488);
+			this->button1->Location = System::Drawing::Point(563, 503);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(280, 46);
@@ -124,7 +129,7 @@ namespace CouseWork {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(45, 16);
+			this->pictureBox3->Location = System::Drawing::Point(44, 31);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(495, 19);
@@ -135,7 +140,7 @@ namespace CouseWork {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(15, 39);
+			this->pictureBox4->Location = System::Drawing::Point(14, 54);
 			this->pictureBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(24, 495);
@@ -148,7 +153,7 @@ namespace CouseWork {
 			this->RandomButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->RandomButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"RandomButton.Image")));
-			this->RandomButton->Location = System::Drawing::Point(562, 384);
+			this->RandomButton->Location = System::Drawing::Point(561, 399);
 			this->RandomButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->RandomButton->Name = L"RandomButton";
 			this->RandomButton->Size = System::Drawing::Size(282, 38);
@@ -163,7 +168,7 @@ namespace CouseWork {
 			this->ClearPlaceButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ClearPlaceButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"ClearPlaceButton.Image")));
-			this->ClearPlaceButton->Location = System::Drawing::Point(562, 426);
+			this->ClearPlaceButton->Location = System::Drawing::Point(561, 441);
 			this->ClearPlaceButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->ClearPlaceButton->Name = L"ClearPlaceButton";
 			this->ClearPlaceButton->Size = System::Drawing::Size(282, 36);
@@ -179,7 +184,7 @@ namespace CouseWork {
 			this->TurnShipButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->TurnShipButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"TurnShipButton.Image")));
-			this->TurnShipButton->Location = System::Drawing::Point(562, 290);
+			this->TurnShipButton->Location = System::Drawing::Point(561, 305);
 			this->TurnShipButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->TurnShipButton->Name = L"TurnShipButton";
 			this->TurnShipButton->Size = System::Drawing::Size(282, 37);
@@ -194,7 +199,7 @@ namespace CouseWork {
 			this->Ship1_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ship1_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ship1_Button.Image")));
-			this->Ship1_Button->Location = System::Drawing::Point(562, 187);
+			this->Ship1_Button->Location = System::Drawing::Point(561, 202);
 			this->Ship1_Button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Ship1_Button->Name = L"Ship1_Button";
 			this->Ship1_Button->Size = System::Drawing::Size(282, 36);
@@ -209,7 +214,7 @@ namespace CouseWork {
 			this->Ship2_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ship2_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ship2_Button.Image")));
-			this->Ship2_Button->Location = System::Drawing::Point(562, 147);
+			this->Ship2_Button->Location = System::Drawing::Point(561, 162);
 			this->Ship2_Button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Ship2_Button->Name = L"Ship2_Button";
 			this->Ship2_Button->Size = System::Drawing::Size(282, 36);
@@ -224,7 +229,7 @@ namespace CouseWork {
 			this->Ship3_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ship3_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ship3_Button.Image")));
-			this->Ship3_Button->Location = System::Drawing::Point(562, 105);
+			this->Ship3_Button->Location = System::Drawing::Point(561, 120);
 			this->Ship3_Button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Ship3_Button->Name = L"Ship3_Button";
 			this->Ship3_Button->Size = System::Drawing::Size(282, 38);
@@ -239,7 +244,7 @@ namespace CouseWork {
 			this->Ship4_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ship4_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ship4_Button.Image")));
-			this->Ship4_Button->Location = System::Drawing::Point(562, 63);
+			this->Ship4_Button->Location = System::Drawing::Point(561, 78);
 			this->Ship4_Button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Ship4_Button->Name = L"Ship4_Button";
 			this->Ship4_Button->Size = System::Drawing::Size(282, 38);
@@ -254,7 +259,7 @@ namespace CouseWork {
 			this->Ship5_Button->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->Ship5_Button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ship5_Button.Image")));
-			this->Ship5_Button->Location = System::Drawing::Point(564, 23);
+			this->Ship5_Button->Location = System::Drawing::Point(563, 38);
 			this->Ship5_Button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Ship5_Button->Name = L"Ship5_Button";
 			this->Ship5_Button->Size = System::Drawing::Size(280, 36);
@@ -267,7 +272,7 @@ namespace CouseWork {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(45, 39);
+			this->pictureBox2->Location = System::Drawing::Point(44, 54);
 			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(495, 495);
@@ -281,7 +286,7 @@ namespace CouseWork {
 			this->DownaldShipButton->Font = (gcnew System::Drawing::Font(L"Georgia", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->DownaldShipButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DownaldShipButton.Image")));
-			this->DownaldShipButton->Location = System::Drawing::Point(562, 248);
+			this->DownaldShipButton->Location = System::Drawing::Point(561, 263);
 			this->DownaldShipButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->DownaldShipButton->Name = L"DownaldShipButton";
 			this->DownaldShipButton->Size = System::Drawing::Size(282, 38);
@@ -290,6 +295,25 @@ namespace CouseWork {
 			this->DownaldShipButton->UseVisualStyleBackColor = true;
 			this->DownaldShipButton->Click += gcnew System::EventHandler(this, &CreatePlace15_Form::DownaldShipButton_Click);
 			this->DownaldShipButton->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &CreatePlace15_Form::DownaldShipButton_KeyPress);
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->помощьToolStripMenuItem });
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(908, 30);
+			this->menuStrip1->TabIndex = 24;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// помощьToolStripMenuItem
+			// 
+			this->помощьToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Georgia", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->помощьToolStripMenuItem->Name = L"помощьToolStripMenuItem";
+			this->помощьToolStripMenuItem->Size = System::Drawing::Size(90, 26);
+			this->помощьToolStripMenuItem->Text = L"Помощь";
+			this->помощьToolStripMenuItem->Click += gcnew System::EventHandler(this, &CreatePlace15_Form::помощьToolStripMenuItem_Click);
 			// 
 			// CreatePlace15_Form
 			// 
@@ -308,9 +332,11 @@ namespace CouseWork {
 			this->Controls->Add(this->pictureBox4);
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->pictureBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
@@ -323,7 +349,10 @@ namespace CouseWork {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -459,7 +488,7 @@ namespace CouseWork {
 			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\5a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\5a.png"));
 			picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			Controls->Add(picturebox);
 			picturebox->BringToFront();
@@ -482,7 +511,7 @@ namespace CouseWork {
 			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\4a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\4a.png"));
 			picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			Controls->Add(picturebox);
 			picturebox->BringToFront();
@@ -505,7 +534,7 @@ namespace CouseWork {
 			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\3a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\3a.png"));
 			picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			Controls->Add(picturebox);
 			picturebox->BringToFront();
@@ -528,7 +557,7 @@ namespace CouseWork {
 			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\2a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\2a.png"));
 			picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			Controls->Add(picturebox);
 			picturebox->BringToFront();
@@ -551,7 +580,7 @@ namespace CouseWork {
 			picturebox->Width = PixelSize;
 			picturebox->Top = pictureBox2->Top;
 			picturebox->Left = pictureBox2->Left;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\1a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\1a.png"));
 			picturebox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
 			Controls->Add(picturebox);
 			picturebox->BringToFront();
@@ -840,12 +869,12 @@ namespace CouseWork {
 			   Controls->Add(picturebox);
 			   picturebox->BringToFront();
 			   if (turn == VERTICAL) {
-				   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "a.png");
+				   picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\" + ChooseShip +"a.png"));
 				   picturebox->Height = PixelSize * ChooseShip;
 				   picturebox->Width = PixelSize;
 			   }
 			   else if (turn == HORIZONTAL) {
-				   picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "b.png");
+				   picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\" + ChooseShip + "b.png"));
 				   picturebox->Height = PixelSize;
 				   picturebox->Width = PixelSize * ChooseShip;
 
@@ -975,14 +1004,14 @@ namespace CouseWork {
 			temp = picturebox->Height;
 			picturebox->Height = picturebox->Width;
 			picturebox->Width = temp;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "b.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\" + ChooseShip + "b.png"));
 			turn = HORIZONTAL;
 		}
 		else if (turn == HORIZONTAL) {
 			temp = picturebox->Height;
 			picturebox->Height = picturebox->Width;
 			picturebox->Width = temp;
-			picturebox->Image = System::Drawing::Image::FromFile("C:\\Users\\Dasha\\Desktop\\Поля Курсач\\" + ChooseShip + "a.png");
+			picturebox->Image = System::Drawing::Image::FromFile(System::IO::Path::GetFullPath("Pictures\\" + ChooseShip + "a.png"));
 			turn = VERTICAL;
 		}
 		FixCoordinate();
@@ -1055,5 +1084,12 @@ namespace CouseWork {
 	private: System::Void button1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 		ChangePlaceShip(e->KeyChar);
 	}
-	};
+	private: System::Void помощьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+			"Здесь происходит расстановка кораблей.\nСуществует два способа\n   1)автоматически\n   2)вручную\n  За автоматическую расстановку кораблей\nотвечает кнопка РАССТАВИТЬ РАНДОМНО.\n  За ручную расстановку кораблей отвечают\nпервые шесть кнопок, функционирующие за\nразмер корабля, поворот и установку. После\nтого как Вы выбрали корабль, он отобразится\nна игровом поле.\nЗа управление отвечают стрелки\n   w-вверх\n   s-вниз\n   a-влево\n   d-вправо.\n  После корректного размещения нужно кликнуть\n кнопку УСТАНОВИТЬ КОРАБЛЬ.\n  Следует помнить, что корабли не могут касаться\nдруг друга при расстановке.",
+			"Помощь",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Information);
+	}
+};
 }

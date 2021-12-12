@@ -665,8 +665,6 @@ namespace CouseWork {
 
 			int LastPlace_X = e->Location.X / 33;
 			int LastPlace_Y = e->Location.Y / 33;
-
-			//	System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show("X: " + LastPlace_X + "Y: " + LastPlace_Y);
 			Shot(LastPlace_X, LastPlace_Y);
 		}
 		else {

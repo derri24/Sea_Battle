@@ -152,7 +152,6 @@ namespace CouseWork {
 			if (result != System::Windows::Forms::DialogResult::OK)
 				e->Cancel = true;
 		}
-
 	}
 	};
 }

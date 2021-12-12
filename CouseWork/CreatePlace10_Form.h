@@ -999,6 +999,11 @@ namespace CouseWork {
 
 	}
 	private: System::Void помощьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult result = System::Windows::Forms::MessageBox::Show(
+			"Здесь происходит расстановка кораблей.\nСуществует два способа\n   1)автоматически\n   2)вручную\n  За автоматическую расстановку кораблей\nотвечает кнопка РАССТАВИТЬ РАНДОМНО.\n  За ручную расстановку кораблей отвечают\nпервые шесть кнопок, функционирующие за\nразмер корабля, поворот и установку. После\nтого как Вы выбрали корабль, он отобразится\nна игровом поле.\nЗа управление отвечают стрелки\n   w-вверх\n   s-вниз\n   a-влево\n   d-вправо.\n  После корректного размещения нужно кликнуть\n кнопку УСТАНОВИТЬ КОРАБЛЬ.\n  Следует помнить, что корабли не могут касаться\nдруг друга при расстановке.",
+			"Помощь",
+			System::Windows::Forms::MessageBoxButtons::OK,
+			System::Windows::Forms::MessageBoxIcon::Information);
 	}
 };
 }
