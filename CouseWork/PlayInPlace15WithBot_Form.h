@@ -352,7 +352,7 @@ namespace CouseWork {
 					   }
 				   }
 			   if (Class1::MyPlace_15[Shot_X, Shot_Y] == 1) {
-				   GoodShot1Lvl(Shot_X, Shot_Y);
+				   GoodShot_FirstLvl(Shot_X, Shot_Y);
 				   RandomShotBot_LightLvl();
 			   }
 			   else if (Class1::MyPlace_15[Shot_X, Shot_Y] == 0) {
@@ -804,11 +804,12 @@ namespace CouseWork {
 
 		   }
 
-		   void  GoodShot1Lvl(int Temp_X, int Temp_Y) {
+		   void  GoodShot_FirstLvl(int Temp_X, int Temp_Y) {
 			   Class1::MyPlace_15[Temp_X, Temp_Y] = 2;
 			   PrintWounded(Temp_X, Temp_Y, FirstPictureBox);
 			   CheckigKilledShip(Class1::MyPlace_15, FirstPictureBox);
 			   CountPartShipFirstPlace++;
+			   DetermineTheWinner();
 			   RandomShotBot_LightLvl();
 		   }
 
@@ -820,6 +821,7 @@ namespace CouseWork {
 			   PrintWounded(Temp_X, Temp_Y, FirstPictureBox);
 			   CheckigKilledShip(Class1::MyPlace_15, FirstPictureBox);
 			   CountPartShipFirstPlace++;
+			   DetermineTheWinner();
 			   FirstShot_X = Temp_X;
 			   FirstShot_Y = Temp_Y;
 			   CheckNextShot();
